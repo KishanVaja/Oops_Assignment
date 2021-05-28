@@ -1,12 +1,101 @@
 ﻿using System;
+using BaseClassLibrary;
+using DerivedClassLibrary;
+using static DerivedClassLibrary.DerivedClass;
 
 namespace Oops_Practical
 {
     class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            //Internal Access Modifier
+            InternalBaseClass Ib = new InternalBaseClass();
+            Ib.InternalTest();
+
+            //Protected Internal Access Modifer
+            InternalDerivedClass Idc = new InternalDerivedClass();
+            Idc.ProtectedDerivedClass();
+
+            //Multilevel Inheritance using user inputs
+            Console.WriteLine("\nPlease Enter the Car details: ");
+            Car car = new Car();
+            car.Drive();
+            car.Speed();
+            car.SeatingCapacity();
+            Console.WriteLine("\nPlease Enter the Bus details: ");
+            Bus bus = new Bus();
+            bus.Drive();
+            bus.Speed();
+            bus.SeatingCapacity();
+
+            ////Multilevel Inheritance Simple
+            //Console.WriteLine("\n Simple Example");
+            //Son son = new Son();
+            //son.grandfather();
+            //son.father();
+            //son.son();
+
+            //caluculation
+            SimpleInterest SI = new SimpleInterest();
+            Console.WriteLine("\nInterest calculation");
+            SI.Inputs();
+            SI.Calculation();
         }
     }
+
+    #region Multiple Inheritance with User inputs
+    public class Vehicle
+    {
+        public string name;
+        public int speed;
+        public int capacity;
+        public void Drive()
+        {
+            Console.WriteLine("Enter the Vehile Name: ");
+            name = Console.ReadLine();
+            Console.WriteLine("This is " + name);
+        }
+        public void Speed()
+        {
+            Console.WriteLine("Enter the Speed of Vehile: ");
+            speed = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("The speed is " + speed + "Kmph");
+        }
+        public void SeatingCapacity()
+        {
+            Console.WriteLine("Enter the capacity: ");
+            capacity = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Seating Capacity is "+ capacity);
+        }
+    }    
+    public class Car : Vehicle
+    {    }
+    public class Bus : Vehicle
+    {    }
+    #endregion
+
+    #region Multilevel Inheritance
+    //class Grandfather
+    //{
+    //    public void grandfather()
+    //    {
+    //        Console.WriteLine("Grandfather...");
+    //    }
+    //}
+    //class Father : Grandfather
+    //{
+    //    public void father()
+    //    {
+    //        Console.WriteLine("Father...");
+    //    }
+    //}
+    //class Son : Father
+    //{
+    //    public void son()
+    //    {
+    //        Console.WriteLine("Son.. ");
+    //    }
+    //}
+    #endregion
 }
