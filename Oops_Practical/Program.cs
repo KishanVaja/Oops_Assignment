@@ -1,6 +1,5 @@
 ﻿using System;
 using BaseClassLibrary;
-using DerivedClassLibrary;
 using static DerivedClassLibrary.DerivedClass;
 
 namespace Oops_Practical
@@ -9,7 +8,15 @@ namespace Oops_Practical
     {
         public static void Main(string[] args)
         {
-            //Internal Access Modifier
+            //Creating objects for the mobile Class
+            Moblies smartphone = new Moblies();
+            smartphone.name = "Nokia";
+            //smartphone.model = "3315"; Private perameter
+            //smartphone.phonenumber = 9898000000; Protected Parameter
+
+
+
+            #region Internal / Protectected Access Modifier Inheritance
             InternalBaseClass Ib = new InternalBaseClass();
             Ib.InternalTest();
 
@@ -35,6 +42,7 @@ namespace Oops_Practical
             //son.grandfather();
             //son.father();
             //son.son();
+            #endregion
 
             //caluculation
             SimpleInterest SI = new SimpleInterest();
@@ -43,6 +51,39 @@ namespace Oops_Practical
             SI.Calculation();
         }
     }
+
+
+    #region Access Modifer
+    public class AccessM
+    {
+        public int a;
+        //This is method
+        public void Display()
+        {
+            Console.WriteLine("This is Display Method");
+        }
+    }
+    
+    public class Moblies
+    {
+        public string name;
+        private string model;
+        protected Int64 phonenumber;
+        public void MakeACall()
+        {
+            Console.WriteLine("Calling to name");
+        }
+    }
+    public class Smartphones : Moblies
+    {
+        public void TakeAPhoto()
+        {
+            name = "Nokia";
+            //model is not able to acces as it is private method
+            phonenumber = 8089808080; 
+        }
+    }
+    #endregion
 
     #region Multiple Inheritance with User inputs
     public class Vehicle
